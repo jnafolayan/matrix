@@ -1,35 +1,35 @@
-var Matrix = Class.extend({
-	init: function() {
-		var rows, columns, array;
-		if(arguments.length === 1 && Array.isArray(arguments[0])) {
-			array = arguments[0];
-			rows = array.length;
-			columns = array[0].length;
-		} else {
-			rows = arguments[0];
-			columns = arguments[1];
-		}
+function Matrix() {
+	var rows, columns, array;
+	if(arguments.length === 1 && Array.isArray(arguments[0])) {
+		array = arguments[0];
+		rows = array.length;
+		columns = array[0].length;
+	} else {
+		rows = arguments[0];
+		columns = arguments[1];
+	}
 
-		rows = rows || 1;
-		columns = columns || 1;
+	rows = rows || 1;
+	columns = columns || 1;
 
-		this.rows = rows;
-		this.columns = columns;
+	this.rows = rows;
+	this.columns = columns;
 
-		if(array) {
-			this.fromArray(array);
-		} else {
-			for(var y = 0; y < rows; y++) {
-				this[y] = [];
-				for(var x = 0; x < columns; x++) {
-					this[y][x] = 0;
-				}
+	if(array) {
+		this.fromArray(array);
+	} else {
+		for(var y = 0; y < rows; y++) {
+			this[y] = [];
+			for(var x = 0; x < columns; x++) {
+				this[y][x] = 0;
 			}
 		}
+	}
 
-		this._states = [];
-	},
+	this._states = [];
+}
 
+Matrix.prototype = {
 	/**
 	 * Saves the current matrix's state.
 	 */
@@ -203,15 +203,9 @@ var Matrix = Class.extend({
 
 	clone: function() {
 		// return new Matrix(this.toArray());
-
-		// Take advatange of the `__parentClass__` property for use by
-		// all matrix classes.
-		return new this.__parentClass__(this.toArray());
 	},
 
-	size: {
-		get: function() {
-			return this.rows * this.columns;
-		}
+	get size() {
+		return this.rows * this.columns;
 	}
-});
+};
