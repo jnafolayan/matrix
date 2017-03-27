@@ -202,10 +202,6 @@ Matrix.prototype = {
 	},
 
 	clone: function() {
-		// return new Matrix(this.toArray());
-	},
-
-	get size() {
-		return this.rows * this.columns;
-	}
+		return new Matrix(this.toArray());
+	}n
 };
