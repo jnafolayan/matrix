@@ -203,5 +203,5 @@ Matrix.prototype = {
 
 	clone: function() {
 		return new Matrix(this.toArray());
-	}n
+	}
 };
